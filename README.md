@@ -1,31 +1,42 @@
 # OpenSRS
 
-Official **PeltyCMS** `registrar` WASM addon (`registrar-opensrs`).
+Register and renew domains with OpenSRS
 
-## Install
+Official **domain registrar** for [PeltyCMS](https://github.com/MythicalLTD/PeltyCMS) — identifier `registrar-opensrs`.
 
-1. Open Pelty Admin → Addons → Marketplace
-2. Set registry URL to `https://market.mythicalsystems.org/api/pelty/addons/registry.json`
-3. Download **OpenSRS**
+## Why this addon
 
-Marketplace: https://market.mythicalsystems.org/marketplace/product/registrar-opensrs  
-Product ID (CI): `88`
+Resellers who sell domains next to hosting and need automated register / renew.
 
-## Develop
+## Features
 
-This repository is a git submodule of [MythicalLTD/PeltyCMS](https://github.com/MythicalLTD/PeltyCMS) at `extensions/addons/reg-opensrs`.
+- Availability checks against the official **OpenSRS** API
+- Register, renew and transfer domains from Pelty orders
+- Nameserver and contact updates where the API allows
+- TLD costs sync into Pelty pricing
+- Sandboxed WASM registrar — credentials stay in the panel
 
-```bash
-# from the PeltyCMS monorepo
-cargo xtask addons reg-opensrs
-```
+## How it works
 
-## Release (Mythic Marketplace)
+1. Install **OpenSRS** from the [Mythical marketplace](https://market.mythicalsystems.org/marketplace/product/registrar-opensrs) (or Pelty Admin → Addons → Marketplace).
+2. Open Pelty Admin and enter your OpenSRS credentials in the addon settings.
+3. Attach it to the products / forms / login flows you care about.
+4. New orders and sign-ins use OpenSRS automatically.
 
-Same flow as [featherpanel-com/PterodactylPanelApi](https://github.com/featherpanel-com/PterodactylPanelApi):
+## Requirements
 
-1. Repo secrets: `MYTHIC_PRODUCT_ID`, `MYTHIC_RELEASE_TOKEN`
-2. Repo variable: `ADDON_DIR=reg-opensrs`
-3. Actions → **Release Addon** → Run workflow
+- A running PeltyCMS panel with WASM addons enabled
+- Valid OpenSRS API / OAuth / panel credentials (depending on the integration)
+- Outbound HTTPS from the panel to OpenSRS
 
-Publishes the packed `registrar-opensrs.zip` via `MythicalLTD/.github/actions/publish-release@v1` and creates a GitHub Release.
+## Get it
+
+[OpenSRS on Mythical Marketplace](https://market.mythicalsystems.org/marketplace/product/registrar-opensrs)
+
+Free official build. Source for this package lives in this repository.
+
+## Support
+
+- Marketplace product page: https://market.mythicalsystems.org/marketplace/product/registrar-opensrs
+- PeltyCMS core: https://github.com/MythicalLTD/PeltyCMS
+- Issues for this addon: use this repo’s Issues tab
