@@ -283,11 +283,7 @@ impl RegistrarModule for OpenSrs {
         })
     }
 
-    fn set_lock<'a>(
-        &'a self,
-        domain: &'a str,
-        locked: bool,
-    ) -> BoxFuture<'a, RegistrarResult<()>> {
+    fn set_lock<'a>(&'a self, domain: &'a str, locked: bool) -> BoxFuture<'a, RegistrarResult<()>> {
         Box::pin(async move {
             self.osrs(
                 "MODIFY",
